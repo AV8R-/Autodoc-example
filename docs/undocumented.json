@@ -1,0 +1,12 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/bogdanmansilin/Desktop/BigInc/BigInc/Incrementor.swift",
+      "line": 22,
+      "symbol": "Incrementor.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/bogdanmansilin/Desktop/BigInc"
+}

@@ -9,28 +9,117 @@
 import XCTest
 @testable import BigInc
 
-class BigIncTests: XCTestCase {
+class IncrementorTests: XCTestCase {
+    
+    var incrementor: Incrementor!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        incrementor = Incrementor()
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testInitialValues() {
+        XCTAssertEqual(incrementor.value, 0)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testIncrement() {
+        var value = 0
+        XCTAssertEqual(incrementor.value, value)
+        for _ in 0..<10 {
+            value += 1
+            incrementor.increment()
+            XCTAssertEqual(incrementor.value, value)
         }
     }
     
+    func testResetOnMax() {
+        var value = 0
+        let max = 10
+        do {
+            try incrementor.set(maximum: max)
+        } catch {
+            XCTFail("Incrementor failed on set max value of 10. Error: \(error)")
+        }
+        XCTAssertEqual(incrementor.value, value)
+        for _ in 0..<2 {
+            for _ in 0..<9 {
+                value += 1
+                incrementor.increment()
+                XCTAssertEqual(incrementor.value, value)
+            }
+            XCTAssertEqual(incrementor.value, max-1)
+            incrementor.increment()
+            XCTAssertEqual(incrementor.value, 0)
+            value = 0
+        }
+    }
+    
+    func testSetMax() {
+        do {
+            try incrementor.set(maximum: -1)
+            XCTFail("Incrementor has set invalid max value -1")
+        } catch Incrementor.Error.maxIsOutOfAllowedRange {
+            
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        do {
+            try incrementor.set(maximum: 0)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        do {
+            try incrementor.set(maximum: 1)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testSetMaxEqualToCurrent() {
+        for _ in 0..<5 {
+            incrementor.increment()
+        }
+        XCTAssertEqual(incrementor.value, 5)
+        
+        do {
+            try incrementor.set(maximum: 6)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        XCTAssertEqual(incrementor.value, 5)
+        
+        do {
+            try incrementor.set(maximum: 5)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        XCTAssertEqual(incrementor.value, 0)
+    }
+    
+    func testSetMaxGreaterThanCurrent() {
+        for _ in 0..<5 {
+            incrementor.increment()
+        }
+        XCTAssertEqual(incrementor.value, 5)
+        
+        do {
+            try incrementor.set(maximum: 6)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        XCTAssertEqual(incrementor.value, 5)
+        
+        do {
+            try incrementor.set(maximum: 4)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+        
+        XCTAssertEqual(incrementor.value, 0)
+    }
 }

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		30853991201BB6960066120D /* BigInc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30853987201BB6960066120D /* BigInc.framework */; };
-		30853996201BB6960066120D /* BigIncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30853995201BB6960066120D /* BigIncTests.swift */; };
+		30853996201BB6960066120D /* IncrementorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30853995201BB6960066120D /* IncrementorTests.swift */; };
 		30853998201BB6960066120D /* BigInc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3085398A201BB6960066120D /* BigInc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		308539A2201BB6B90066120D /* Incrementor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308539A1201BB6B90066120D /* Incrementor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +28,9 @@
 		3085398A201BB6960066120D /* BigInc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BigInc.h; sourceTree = "<group>"; };
 		3085398B201BB6960066120D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30853990201BB6960066120D /* BigIncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BigIncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		30853995201BB6960066120D /* BigIncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigIncTests.swift; sourceTree = "<group>"; };
+		30853995201BB6960066120D /* IncrementorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementorTests.swift; sourceTree = "<group>"; };
 		30853997201BB6960066120D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		308539A1201BB6B90066120D /* Incrementor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Incrementor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		30853989201BB6960066120D /* BigInc */ = {
 			isa = PBXGroup;
 			children = (
+				308539A1201BB6B90066120D /* Incrementor.swift */,
 				3085398A201BB6960066120D /* BigInc.h */,
 				3085398B201BB6960066120D /* Info.plist */,
 			);
@@ -80,7 +83,7 @@
 		30853994201BB6960066120D /* BigIncTests */ = {
 			isa = PBXGroup;
 			children = (
-				30853995201BB6960066120D /* BigIncTests.swift */,
+				30853995201BB6960066120D /* IncrementorTests.swift */,
 				30853997201BB6960066120D /* Info.plist */,
 			);
 			path = BigIncTests;
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					30853986201BB6960066120D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					3085398F201BB6960066120D = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308539A2201BB6B90066120D /* Incrementor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30853996201BB6960066120D /* BigIncTests.swift in Sources */,
+				30853996201BB6960066120D /* IncrementorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +339,7 @@
 		3085399C201BB6960066120D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -347,6 +353,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.manshilin.BigInc;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,6 +362,7 @@
 		3085399D201BB6960066120D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -376,6 +384,7 @@
 		3085399F201BB6960066120D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DDN2V9TNSF;
 				INFOPLIST_FILE = BigIncTests/Info.plist;
@@ -390,6 +399,7 @@
 		308539A0201BB6960066120D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DDN2V9TNSF;
 				INFOPLIST_FILE = BigIncTests/Info.plist;
